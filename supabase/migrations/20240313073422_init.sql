@@ -102,11 +102,11 @@ create table "public"."locations" (
     "updated" timestamp with time zone,
     "created" timestamp with time zone not null default now(),
     "node_url" text,
-    "user_id" integer,
-    "repository_id" integer,
-    "organization_id" integer,
-    "comment_id" integer,
-    "issue_id" integer
+    "user_id" bigint,
+    "repository_id" bigint,
+    "organization_id" bigint,
+    "comment_id" bigint,
+    "issue_id" bigint
 );
 
 
@@ -180,7 +180,7 @@ create table "public"."tokens" (
 alter table "public"."tokens" enable row level security;
 
 create table "public"."users" (
-    "id" integer not null default nextval('users_id_seq'::regclass),
+    "id" bigint not null default nextval('users_id_seq'::regclass),
     "created" timestamp with time zone not null default now(),
     "updated" timestamp with time zone,
     "wallet_id" integer,
@@ -960,11 +960,11 @@ grant truncate on table "public"."wallets" to "service_role";
 grant update on table "public"."wallets" to "service_role";
 
 create policy "Enable read access for all users"
-on "public"."permits"
-as permissive
-for select
-to public
-using (true);
+    on "public"."permits"
+    as permissive
+    for select
+    to public
+    using (true);
 
 create policy "Enable read access for all users"
 	on "public"."locations"
