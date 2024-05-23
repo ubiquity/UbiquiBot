@@ -172,8 +172,11 @@ export async function isUserAdminOrBillingManager(
       console.trace(membership);
       return membership.role === "billing_manager";
     } catch (e) {
-      context.logger.error("Could not get the Billing Manager from membership", e)
-      return false
+      context.logger.error(
+        `Could not get the Billing Manager status for ${payload.repository.owner.login} within ${payload.organization.login}`,
+        e
+      );
+      return false;
     }
   }
 }
