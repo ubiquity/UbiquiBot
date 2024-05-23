@@ -163,16 +163,17 @@ export async function isUserAdminOrBillingManager(
 
   async function checkIfIsBillingManager() {
     if (!payload.organization) throw context.logger.fatal(`No organization found in payload!`);
-    const { data: membership } = await context.octokit.rest.orgs.getMembershipForUser({
-      org: payload.organization.login,
-      username: payload.repository.owner.login,
-    });
+    try {
+      const { data: membership } = await context.octokit.rest.orgs.getMembershipForUser({
+        org: payload.organization.login,
+        username: payload.repository.owner.login,
+      });
 
-    console.trace(membership);
-    if (membership.role === "billing_manager") {
-      return true;
-    } else {
-      return false;
+      console.trace(membership);
+      return membership.role === "billing_manager";
+    } catch (e) {
+      context.logger.error("Could not get the Billing Manager from membership", e)
+      return false
     }
   }
 }
