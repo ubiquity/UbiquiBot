@@ -61,7 +61,7 @@
     "skipLibCheck": true,
     "sourceMap": true
   },
-  "include": ["src/", "research"],
-  "exclude": ["src/coverage/"],
+  "include": ["src/"],
+  "exclude": ["src/coverage/", "knip.ts"],
   "compileOnSave": false
 }
