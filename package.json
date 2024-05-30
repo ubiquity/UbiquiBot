@@ -19,8 +19,8 @@
     "format:cspell": "cspell --config .cspell.json 'src/**/*.{js,ts,json,md,yml}'",
     "start:watch": "nodemon --exec 'bun start'",
     "start": "probot run ./dist/main.js",
-    "format:knip": "knip",
-    "format:knip-ci": "knip --no-exit-code --reporter json",
+    "knip": "knip",
+    "knip-ci": "knip --no-exit-code --reporter json",
     "prepare": "husky install",
     "test": "jest",
     "logs:netlify": "bun netlify logs:function webhooks"
