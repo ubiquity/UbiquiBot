@@ -1,4 +1,6 @@
-# UbiquiBot
+# UbiquiBot (deprecated)
+
+# UbiquiBot v2: https://github.com/ubiquity/ubiquibot-kernel
 
 Ubiquity DAO's GitHub Bot for Automating DevPool Management.
 
